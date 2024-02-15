@@ -12,7 +12,7 @@ window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Pygame Window")
 
 # Create a ball object
-ball = Ball(100, 100, 50, 50, (0, 0, 255), (5, 2))
+ball = Ball(100, 100, 25, (255, 100, 100), [10, 10])
 
 # Run the game loop
 while True:
@@ -28,11 +28,17 @@ while True:
     ball.check_collision_with_window(width, height)
 
     # Draw something on the window
-    window.fill((255, 255, 255))  # Fill the window with a white color
-    pygame.draw.rect(window, ball.color, ball.rect)  # Draw the ball
+    window.fill((0, 200, 100))  # Fill the window with a white color
+    # Draw green checker pattern
+    square_size = 50
+    for x in range(0, width, square_size):
+        for y in range(0, height, square_size):
+            if (x // square_size + y // square_size) % 2 == 0:
+                pygame.draw.rect(window, (0, 250, 100), (x, y, square_size, square_size))
+    ball.draw(window)
 
     # Update the display
     pygame.display.flip()
 
     # Control the frame rate
-    pygame.time.Clock().tick(30)
+    pygame.time.Clock().tick(120)
