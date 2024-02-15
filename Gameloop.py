@@ -10,7 +10,7 @@ pygame.init()
 width = 600
 height = 1000
 window = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Pygame Window")
+pygame.display.set_caption("Mini Golf")
 
 # Create the game field
 game_field = Field(width, height)
