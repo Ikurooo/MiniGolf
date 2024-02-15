@@ -9,9 +9,9 @@ class Ball:
         self.color = color
         self.velocity = list(velocity)  # Convert velocity to a list
 
-    def update(self):
-        self.x += self.velocity[0]
-        self.y += self.velocity[1]
+    def update(self, dt):
+        self.x += self.velocity[0] * dt
+        self.y += self.velocity[1] * dt
 
     def check_collision_with_window(self, window_width, window_height):
         if self.x - self.radius < 0 or self.x + self.radius > window_width:
