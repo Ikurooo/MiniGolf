@@ -33,8 +33,8 @@ while True:
             delta_y = drag_end[1] - game_field.drag_start[1]
 
             # Add the delta values to the ball's velocity
-            game_field.ball.velocity[0] -= delta_x / 5.0  # You can adjust the scale factor for sensitivity
-            game_field.ball.velocity[1] -= delta_y / 5.0
+            game_field.ball.velocity[0] -= delta_x  # You can adjust the scale factor for sensitivity
+            game_field.ball.velocity[1] -= delta_y
 
             game_field.drag_start = None  # Reset the drag start position
 

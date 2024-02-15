@@ -6,7 +6,7 @@ class Field:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.ball = Ball(100, 100, 25, (255, 100, 100), [0, 0])
+        self.ball = Ball(400, 400, 25, (255, 100, 100), [0, 0], 0.99)
 
     def update(self, dt):
         self.ball.update(dt)
