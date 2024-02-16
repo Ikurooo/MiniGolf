@@ -13,7 +13,7 @@ window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mini Golf")
 
 # Create the game field
-game_field = Field(width, height, 0)
+game_field = Field(width, height, 7)
 
 # Run the game loop
 while True:
