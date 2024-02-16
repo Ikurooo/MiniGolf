@@ -4,11 +4,36 @@ from Obstacle import Obstacle
 
 
 class Field:
-    def __init__(self, width, height):
+    def __init__(self, width, height, level):
         self.width = width
         self.height = height
-        self.ball = Ball(400, 400, 25, (255, 100, 100), [0, 0], 0.99)
-        self.obstacle = Obstacle(300, 700, 100, 100, (255, 0, 255))
+        self.ball = None
+        self.obstacle = None
+        self.load_level(level)
+
+    def load_level(self, level):
+        with open("levels.txt") as file:
+            for number, line in enumerate(file):
+                if number == level:
+                    params = line.strip().split(";")
+                    self.ball = Ball(
+                        int(params[0]),
+                        int(params[1]),
+                        int(params[2]),
+                        tuple(map(int, params[3].split(','))),
+                        [0, 0],
+                        float(params[4])
+                    )
+
+                    self.obstacle = Obstacle(
+                        int(params[5]),
+                        int(params[6]),
+                        int(params[7]),
+                        int(params[8]),
+                        tuple(map(int, params[9].strip().split(',')))
+                    )
+                    print(self.obstacle.color)
+                    break
 
     def update(self, dt):
         self.ball.update(dt)
