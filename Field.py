@@ -17,22 +17,22 @@ class Field:
                 if number == level:
                     params = line.strip().split(";")
                     self.ball = Ball(
-                        int(params[0]),
-                        int(params[1]),
-                        int(params[2]),
-                        tuple(map(int, params[3].split(','))),
-                        [0, 0],
-                        float(params[4])
+                        x=int(params[0]),
+                        y=int(params[1]),
+                        radius=25,
+                        color=tuple(map(int, params[3].split(','))),
+                        velocity=[0, 0],
+                        friction=0.9900
                     )
 
                     self.obstacle = Obstacle(
-                        int(params[5]),
-                        int(params[6]),
-                        int(params[7]),
-                        int(params[8]),
-                        tuple(map(int, params[9].strip().split(',')))
+                        x=int(params[4]),
+                        y=int(params[5]),
+                        width=int(params[6]),
+                        height=int(params[7]),
+                        color=tuple(map(int, params[8].strip().split(',')))
                     )
-                    print(self.obstacle.color)
+
                     break
 
     def update(self, dt):
