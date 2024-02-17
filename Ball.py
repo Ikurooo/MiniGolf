@@ -37,9 +37,8 @@ class Ball:
         obstacle_bottom = obstacle.rect.bottom
 
         # Check if any side of the ball is outside the obstacle
-        if ball_right < obstacle_left or ball_left > obstacle_right or ball_bottom < obstacle_top or ball_top > obstacle_bottom:
-            pass
-        else:
+        if not (ball_right < obstacle_left or ball_left > obstacle_right or
+                ball_bottom < obstacle_top or ball_top > obstacle_bottom):
             # Change the direction of the ball upon collision
             if self.x < obstacle_left or self.x > obstacle_right:
                 self.velocity[0] = -self.velocity[0]  # Reverse horizontal velocity
