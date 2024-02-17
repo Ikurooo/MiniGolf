@@ -7,13 +7,13 @@ FPS: int = 120
 pygame.init()
 
 # Set up the window
-width = 600
+width = 1000
 height = 1000
 window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mini Golf")
 
 # Create the game field
-game_field = Field(width, height, 7)
+game_field = Field(width, height, 0)
 
 # Run the game loop
 while True:
