@@ -1,19 +1,21 @@
 import pygame
+from pygame import Surface
+
 from Ball import Ball
 from Obstacle import Obstacle
 from Hole import Hole
 
 
 class Field:
-    def __init__(self, width, height, level):
-        self.width = width
-        self.height = height
-        self.ball = None
-        self.hole = None
-        self.obstacles = []
+    def __init__(self, width: int, height: int, level: int):
+        self.width: int = width
+        self.height: int = height
+        self.ball: Ball = None
+        self.hole: Hole = None
+        self.obstacles: list[Obstacle] = []
         self.load_level(level)
 
-    def load_level(self, level):
+    def load_level(self, level: int):
         with open("levels.txt") as file:
             for number, line in enumerate(file):
                 if number == level:
@@ -23,8 +25,8 @@ class Field:
                         x=int(ball_params[0]),
                         y=int(ball_params[1]),
                         radius=25,
-                        color=tuple(map(int, ball_params[2].split('.'))),
-                        velocity=[0, 0],
+                        color=list(map(int, ball_params[2].split('.'))),
+                        velocity=[0.0, 0.0],
                         friction=0.9900
                     )
 
@@ -46,14 +48,14 @@ class Field:
                     )
                     break
 
-    def update(self, dt):
+    def update(self, dt: float):
         self.ball.update(dt)
         self.ball.check_collision_with_window(self.width, self.height)
         # TODO: add spacial hash table
         for obstacle in self.obstacles:
             self.ball.check_collision_with_obstacle(obstacle)
 
-    def draw(self, window):
+    def draw(self, window: Surface):
         window.fill((0, 200, 100))  # Fill the window with a white color
         # Draw green checker pattern
         square_size = 50

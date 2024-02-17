@@ -7,8 +7,8 @@ FPS: int = 120
 pygame.init()
 
 # Set up the window
-width = 1000
-height = 1000
+width: float = 1000
+height: float = 1000
 window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mini Golf")
 
