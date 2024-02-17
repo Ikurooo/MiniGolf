@@ -1,6 +1,7 @@
 import pygame
 from Ball import Ball
 from Obstacle import Obstacle
+from Hole import Hole
 
 
 class Field:
@@ -8,6 +9,7 @@ class Field:
         self.width = width
         self.height = height
         self.ball = None
+        self.hole = None
         self.obstacles = []
         self.load_level(level)
 
@@ -36,6 +38,12 @@ class Field:
                             color=tuple(map(int, obstacle_params[4].strip().split('.')))
                         )
                         self.obstacles.append(obstacle)
+
+                    hole_params = params[-1].strip().split(",")
+                    self.hole = Hole(
+                        x=int(hole_params[0]),
+                        y=int(hole_params[1])
+                    )
                     break
 
     def update(self, dt):
@@ -56,3 +64,4 @@ class Field:
         for obstacle in self.obstacles:
             obstacle.draw(window)
         self.ball.draw(window)
+        self.hole.draw(window)
